@@ -24,9 +24,9 @@ namespace LinkedList
             Console.ReadLine();
 
 
-            foreach (Node n in l1)
+            foreach (object n in l1)
             {
-                Console.WriteLine(n.Data);
+                Console.WriteLine(n);
             }
             Console.ReadLine();
 

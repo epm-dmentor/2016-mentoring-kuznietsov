@@ -3,22 +3,56 @@ using System.Collections;
 
 namespace LinkedList
 {
-    public class Node
-    {
-        public Node Next { get; set; }
-        public Node Prev { get; set; }
-        public object Data { get; set; }
-        public Node()
-        {
-
-        }
-    }
-
 
     public class MyLinkedList : IEnumerable
     {
-        public Node Head { get; set; }
-        public Node Tail { get; set; }
+        private class Node
+        {
+            public Node Next { get; set; }
+            public Node Prev { get; set; }
+            public object Data { get; set; }
+        }
+
+        //Foreach implementation with IEnumerator object
+
+        private class LinkedListEnumerator : IEnumerator
+        {
+            private MyLinkedList _linkedList;
+            private Node _cursor;
+
+            public LinkedListEnumerator(MyLinkedList list)
+            {
+                _linkedList = list;
+                _cursor = list.Head;
+            }
+
+            public object Current
+            {
+                get
+                {
+                    return _cursor.Data;
+                }
+            }
+
+            public bool MoveNext()
+            {
+                if (_cursor.Next != null)
+                {
+                    _cursor = _cursor.Next;
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            public void Reset()
+            {
+                _cursor = _linkedList.Head;
+            }
+        }
+
+        private Node Head { get; set; }
+        private Node Tail { get; set; }
         private int size = 0;
 
         public int Length
@@ -141,16 +175,23 @@ namespace LinkedList
             }
         }
 
-        //Implement IEnumerable
         public IEnumerator GetEnumerator()
         {
-            Node iterator = Head;
-            while (iterator.Next != null)
-            {
-                yield return iterator;
-                iterator = iterator.Next;
-            }
+
+            return (IEnumerator)new LinkedListEnumerator(this);
+
         }
+
+
+        //public IEnumerator GetEnumerator()
+        //{
+        //    Node iterator = Head;
+        //    while (iterator.Next != null)
+        //    {
+        //        yield return iterator;
+        //        iterator = iterator.Next;
+        //    }
+        //}
     }
- 
+
 }

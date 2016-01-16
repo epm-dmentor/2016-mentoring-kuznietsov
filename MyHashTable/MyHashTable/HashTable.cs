@@ -1,101 +1,94 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyHashTable
 {
     public class HashTable : IHashTable
     {
         //Variables
-        private int _hash { get; set; }
-        private int _tableSize { get; set; }    
-        private LinkedList<_listElement>[] _tableArray { get; set; }    
-
+        private int Hash { get; set; }
+        private int TableSize { get; }    
+        private ListElement[] TableArray { get; }
 
         //Constructos
         public HashTable(int size)
         {
-            _tableSize = size;
-            _tableArray = new LinkedList<_listElement>[_tableSize];
-            for (int i = 0; i < _tableSize; i++)
+            TableSize = size;
+            TableArray = new ListElement[TableSize];
+            for (var i = 0; i < TableSize; i++)
             {
-                _tableArray[i] = new LinkedList<_listElement>();
+                TableArray[i] = new ListElement();
             }
         }
 
-        //List node structure
-        private struct _listElement
+        //Bucket class
+        private class ListElement
         {
-            internal object Key { get; set; }
-            internal object Value { get; set; }  
+            internal object Key { get; set;  }
+            internal object Value { get; set; }
+            internal ListElement NextElement { get; set; }
 
-            //Struct CTOR
-            public _listElement(object sKey, object sValue)
+            public ListElement()
             {
-                Key = sKey;
-                Value = sValue;
+                Key = "EMPTY";
+                Value = "EMPTY";
+                NextElement = null;
             }
         }
 
         //Internal Methods
         private int GetHash (object key)
         {
-            int hash = key.GetHashCode();
-            _hash = Math.Abs(hash % _tableSize);
-            return _hash;
+            var hash = key.GetHashCode();
+            Hash = Math.Abs(hash % TableSize);
+            return Hash;
         }
-
 
         //Interface
         //IHashTable implementation
 
         public bool Contains(object key)
         {
-            return this[key] != null; //Returns boolean result of comparison
-
-            //int listIndex = GetHash(key);
-            //if (_tableArray[listIndex].Count > 0)
-            //{
-            //    LinkedList<_listElement> listPointer = _tableArray[listIndex];
-            //    foreach (_listElement node in listPointer)
-            //    {
-            //        if (node.Key == key)
-            //        {
-            //            return true;
-            //        }
-            //    }
-            //}
-            //return false;
+            var index = GetHash(key);
+            if (!Equals(TableArray[index].Key.ToString(), "EMPTY"))
+            {
+                var pointer = TableArray[index];
+                while (pointer != null)
+                {
+                    if (Equals(pointer.Key, key))
+                    {
+                        return true;
+                    }
+                    pointer = pointer.NextElement;
+                }
+                return false;
+            }
+            return false;
         }
 
         public void Add(object key, object value)
         {
-            _listElement newNode = new _listElement (key, value);  //Create node for insertion
-            int listIndex = GetHash(key);   //Find hash
+            var index = GetHash(key);
+            if (Contains(key) && value != null)
+            {
+                throw new Exception("Such key already exists in the table!");
+            }
 
-                if (Contains(key))
+            if (Equals(TableArray[index].Key.ToString(), "EMPTY"))
+            {
+                TableArray[index].Key = key;
+                TableArray[index].Value = value;
+            }
+            else
+            {
+                var pointer = TableArray[index];
+                var newElement = new ListElement { Key = key, Value = value, NextElement = null };
+                while (pointer != null)
                 {
-                    LinkedListNode<_listElement> current = _tableArray[listIndex].First;
-                    while (current != null)
-                    {
-                        if (current.Value.Key == newNode.Key)
-                        {
-                            if (newNode.Value == null)
-                            {
-                                _tableArray[listIndex].Remove(current);
-                            }
-                            else
-                            current.Value = newNode;
-                            return;
-                        }
-                        current = current.Next;
-                    }
-                }   
-                else
-                    _tableArray[listIndex].AddLast(newNode);
-        }
+                    pointer = pointer.NextElement;
+                }
+                pointer = newElement;
+            }
+            }
 
         public bool TryGet(object key, out object value)
         {
@@ -107,30 +100,49 @@ namespace MyHashTable
         {
             get
             {
-                object keyValue = null;
-                int listIndex = GetHash(key);
-                if (_tableArray[listIndex].Count >0)
+                if (!Contains(key)) throw new Exception("Key not found");
+                var index = GetHash(key);
+                object keyValue;
+                if (!Equals(TableArray[index].ToString(), key.ToString()))
                 {
-                    LinkedListNode<_listElement> current = _tableArray[listIndex].First;
-                    while (current != null)
+                    var pointer = TableArray[index];
+                    while (pointer != null)
                     {
-                        if (current.Value.Key == key)
+                        if (Equals(pointer.Key, key))
                         {
-                            keyValue = current.Value.Value;
+                            keyValue = pointer.Value;
                             return keyValue;
                         }
-                        current = current.Next;
+                        pointer = pointer.NextElement;
                     }
                 }
+                keyValue = TableArray[index].Value;
                 return keyValue;
             }
 
             set
             {
-                Add(key, value);
+                if (value == null && Contains(key))
+                {
+                    var index = GetHash(key);
+                    ListElement pointer = TableArray[index];
+                    while (!Equals(pointer.Key, key))
+                    {
+                        pointer = pointer.NextElement;
+                    }
+                    pointer.Key = "EMPTY";
+                    pointer.Value = "EMPTY";
+                }
+                else
+                    Add(key, value);
+
             }
         }
 
 
     }
 }
+
+//operator overloading
+//equals + gethascode
+//

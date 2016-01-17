@@ -32,20 +32,21 @@ namespace MyHashTableTests
             Assert.AreEqual(testTable[2],"TWO");
             Assert.AreEqual(testTable[3],"THREE");
 
-
-            //Test to check if exception is thrown when existig element is added
-            //testTable.Add(3, "Thats a THREE");
-
             //Test for collision handling
 
         }
 
-        [Test()]
-        [NUnit.Framework.Ignore("Skipped till later")]
-
-        public void TryGetTest()
+        [Test(), NUnit.Framework.Description("Test to check if exceptions are thrown")]
+        public void ExceptionTest()
         {
-            Assert.Fail();
+            HashTable testTable = new HashTable(5);
+            testTable.Add(3, "Thats a THREE");
+            Assert.Throws<Exception>(() => testTable.Add(3, 5));
+            Assert.Throws<Exception>(() =>
+            {
+                var temp = testTable[5];
+            });
+
         }
 
         [Test]
@@ -62,8 +63,7 @@ namespace MyHashTableTests
             testTable[1808] = null;
             Assert.IsFalse(testTable.Contains(5));
             Assert.IsFalse(testTable.Contains(1808));
-            //Test to check if exception is thrown when getter recieves non existing key value
-
+            
 
         }
     }

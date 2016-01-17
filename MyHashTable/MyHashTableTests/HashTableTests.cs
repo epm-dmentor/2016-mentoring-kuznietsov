@@ -18,7 +18,7 @@ namespace MyHashTableTests
             Assert.IsTrue(testTable.Contains(18081985));
         }
 
-        [Test(), NUnit.Framework.Description ("Test of Add method")]
+        [Test(), Description("Test of Add method")]
         public void AddTest()
         {
             //Test to check if values are added correctly
@@ -28,15 +28,24 @@ namespace MyHashTableTests
             testTable.Add(3, "THREE");
 
             //Check if getter works with added items
-            Assert.AreEqual(testTable[1],"ONE");
-            Assert.AreEqual(testTable[2],"TWO");
-            Assert.AreEqual(testTable[3],"THREE");
+            Assert.AreEqual(testTable[1], "ONE");
+            Assert.AreEqual(testTable[2], "TWO");
+            Assert.AreEqual(testTable[3], "THREE");
 
             //Test for collision handling
-
+            var testTable1 = new HashTable(1);
+            for (int i = 1; i < 6; i++)
+            {
+                testTable1.Add(i, "TEST");
+            }
+            Assert.AreEqual(testTable1[1], "TEST");
+            Assert.AreEqual(testTable1[2], "TEST");
+            Assert.AreEqual(testTable1[3], "TEST");
+            Assert.AreEqual(testTable1[4], "TEST");
+            Assert.AreEqual(testTable1[5], "TEST");
         }
 
-        [Test(), NUnit.Framework.Description("Test to check if exceptions are thrown")]
+        [Test(), Description("Test to check if exceptions are thrown")]
         public void ExceptionTest()
         {
             HashTable testTable = new HashTable(5);
@@ -64,6 +73,17 @@ namespace MyHashTableTests
             Assert.IsFalse(testTable.Contains(5));
             Assert.IsFalse(testTable.Contains(1808));
             
+
+        }
+
+        [Test]
+        public void TryGetTest()
+        {
+            var testTable = new HashTable(5);
+            testTable[1] = "TESTVALUE";
+            object keyValue;
+            testTable.TryGet(1, out keyValue);
+            Assert.AreEqual(keyValue.ToString(), "TESTVALUE");
 
         }
     }

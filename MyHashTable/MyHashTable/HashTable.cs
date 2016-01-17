@@ -82,11 +82,12 @@ namespace MyHashTable
             {
                 var pointer = TableArray[index];
                 var newElement = new ListElement { Key = key, Value = value, NextElement = null };
-                while (pointer != null)
+                while (pointer.NextElement != null)
                 {
                     pointer = pointer.NextElement;
                 }
-                pointer = newElement;
+
+                pointer.NextElement = newElement;
             }
             }
 

@@ -1,10 +1,11 @@
 ﻿namespace LOSA.BL
 {
-    class FlightThreat
+    public class FlightThreat
     {
         public int Id { get; set; }
-        public FlightObservation FlightObservation { get; set; }    
-        public FlightThreats ThreatType { get; set; }
+        public FlightObservation ParentObservation { get; set; }
+        public string DetectedOnStage { get; set; }
+        public ThreatType ThreatType { get; set; }
         public bool ThreatOutcome { get; set; }
     }
 }

@@ -40,18 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\Airports.cs" />
-    <Compile Include="Enums\FlightErrors.cs" />
-    <Compile Include="Enums\FlightStages.cs" />
-    <Compile Include="Enums\FlightThreats.cs" />
-    <Compile Include="Enums\Observers.cs" />
+    <Compile Include="DBDictionaryClasses\Airport.cs" />
+    <Compile Include="Enums\ErrorOutcome.cs" />
+    <Compile Include="Enums\EvaluationScale.cs" />
+    <Compile Include="Enums\FlightStage.cs" />
+    <Compile Include="DBDictionaryClasses\ThreatType.cs" />
+    <Compile Include="DBDictionaryClasses\Observer.cs" />
     <Compile Include="Enums\PilotType.cs" />
-    <Compile Include="Enums\PlaneType.cs" />
+    <Compile Include="DBDictionaryClasses\Plane.cs" />
+    <Compile Include="EvaluationLanding.cs" />
+    <Compile Include="EvaluationPredeparture.cs" />
+    <Compile Include="EvaluationTakeOff.cs" />
     <Compile Include="FlightError.cs" />
     <Compile Include="Flight.cs" />
     <Compile Include="FlightObservation.cs" />
     <Compile Include="FlightThreat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DBDictionaryClasses\ErrorType.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

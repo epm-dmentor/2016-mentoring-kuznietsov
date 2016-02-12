@@ -1,7 +1,7 @@
 ﻿// ReSharper disable once CheckNamespace
 namespace LOSA.BL
 {
-    public enum FlightStages
+    public enum FlightStage
     {
         Predeparture = 1,
         TakeOff = 2,

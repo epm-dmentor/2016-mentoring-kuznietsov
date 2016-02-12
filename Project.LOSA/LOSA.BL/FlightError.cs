@@ -1,10 +1,11 @@
 ﻿namespace LOSA.BL
 {
-    class FlightError
+    public class FlightError
     {
         public int Id { get; set; }
-        public FlightObservation FlightObservation { get; set; }    
-        public FlightErrors ErrorType { get; set; }
+        public FlightObservation ParentObservation { get; set; }   
+        public string DetectedOnStage { get; set; } 
+        public FlightError ErrorType { get; set; }
         public FlightErrorOutcome ErrorOutcome { get; set; }
     }
 }

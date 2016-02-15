@@ -1,4 +1,6 @@
-﻿namespace LOSA.BL
+﻿using LOSA.BL.Entities;
+
+namespace LOSA.BL
 {
     public class FlightThreat
     {

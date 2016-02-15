@@ -1,7 +1,6 @@
-﻿// ReSharper disable once CheckNamespace
-namespace LOSA.BL
+﻿namespace LOSA.BL.Entities
 {
-    public class ThreatType
+    public class Plane
     {
         public int Id { get; set; }
         public string Code { get; set; }

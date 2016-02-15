@@ -13,7 +13,7 @@ namespace LOSA.DBL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602112022053_Initial"; }
+            get { return "201602151358500_Initial"; }
         }
         
         string IMigrationMetadata.Source

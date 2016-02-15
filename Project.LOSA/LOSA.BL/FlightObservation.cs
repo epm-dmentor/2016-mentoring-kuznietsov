@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using LOSA.BL.Entities;
 
 namespace LOSA.BL
 {
@@ -9,9 +10,8 @@ namespace LOSA.BL
         public int Id { get; set; }
         public Flight ObservedFlight { get; set; }
         public Observer FlightObservingPerson { get; set; }
-        public PilotType TakeOffPilot { get; set; }
-        public PilotType LandingPilot { get; set; }
-        public Observer CurrentFlightObserver { get; set; }
+        public CrewMember TakeOffPilot { get; set; }
+        public CrewMember LandingPilot { get; set; }
         public bool TakeoffDelay { get; set; }
         public bool CrewObserved { get; set; }
         public bool ThreatsObserved

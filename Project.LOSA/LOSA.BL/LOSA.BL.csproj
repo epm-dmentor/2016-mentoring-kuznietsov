@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,14 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBDictionaryClasses\Airport.cs" />
+    <Compile Include="Entities\Airport.cs" />
+    <Compile Include="Entities\CrewMember.cs" />
+    <Compile Include="Entities\FlightCrew.cs" />
+    <Compile Include="Entities\Position.cs" />
     <Compile Include="Enums\ErrorOutcome.cs" />
     <Compile Include="Enums\EvaluationScale.cs" />
     <Compile Include="Enums\FlightStage.cs" />
-    <Compile Include="DBDictionaryClasses\ThreatType.cs" />
-    <Compile Include="DBDictionaryClasses\Observer.cs" />
-    <Compile Include="Enums\PilotType.cs" />
-    <Compile Include="DBDictionaryClasses\Plane.cs" />
+    <Compile Include="Entities\ThreatType.cs" />
+    <Compile Include="Entities\Observer.cs" />
+    <Compile Include="Entities\Plane.cs" />
     <Compile Include="EvaluationLanding.cs" />
     <Compile Include="EvaluationPredeparture.cs" />
     <Compile Include="EvaluationTakeOff.cs" />
@@ -56,7 +59,7 @@
     <Compile Include="FlightObservation.cs" />
     <Compile Include="FlightThreat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DBDictionaryClasses\ErrorType.cs" />
+    <Compile Include="Entities\ErrorType.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

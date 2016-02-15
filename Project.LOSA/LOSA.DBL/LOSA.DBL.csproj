@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27C4CC30-9317-495D-AC8C-ADF83507DA1A}</ProjectGuid>
+    <ProjectGuid>{2B222336-11C1-4F82-BBD7-6BCF37671001}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LOSA.DBL</RootNamespace>
@@ -51,19 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LOSA.Context.cs" />
-    <Compile Include="Migrations\201602112022053_Initial.cs" />
-    <Compile Include="Migrations\201602112022053_Initial.Designer.cs">
-      <DependentUpon>201602112022053_Initial.cs</DependentUpon>
+    <Compile Include="LOSAContext.cs" />
+    <Compile Include="Migrations\201602151358500_Initial.cs" />
+    <Compile Include="Migrations\201602151358500_Initial.Designer.cs">
+      <DependentUpon>201602151358500_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LOSA.BL\LOSA.BL.csproj">
@@ -72,8 +66,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602112022053_Initial.resx">
-      <DependentUpon>201602112022053_Initial.cs</DependentUpon>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602151358500_Initial.resx">
+      <DependentUpon>201602151358500_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

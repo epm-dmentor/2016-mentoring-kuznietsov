@@ -1,5 +1,4 @@
-﻿ // ReSharper disable once CheckNamespace
-namespace LOSA.BL
+﻿namespace LOSA.BL.Entities
 {
     public class ErrorType
     {

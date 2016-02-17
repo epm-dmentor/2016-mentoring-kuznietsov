@@ -7,6 +7,7 @@ namespace LOSA.BL
         TakeOff = 2,
         Cruise = 3,
         Landing = 4,
-        PostFlight = 5
+        PostFlight = 5,
+        FlightClosed = 6
     }
 }

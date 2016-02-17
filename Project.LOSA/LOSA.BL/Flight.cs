@@ -12,9 +12,9 @@ namespace LOSA.BL
         public CrewMember FirstOfficer { get; set; }
         public Airport Departure { get; set; }
         public Airport Arriwal { get; set; }
-        public DateTime TakeOffTimeStamp { get; set; }
-        public DateTime LandingTimeStamp { get; set; }
-        public int CurrentFlightAttitude { get; set; }
+        public DateTime? TakeOffTimeStamp { get; set; }
+        public DateTime? LandingTimeStamp { get; set; }
+        public int? CurrentFlightAttitude { get; set; }
         public FlightStage CurrentFlightStage { get; set; }
 
         //Constructor

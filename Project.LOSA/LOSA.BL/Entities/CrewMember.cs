@@ -10,6 +10,6 @@ namespace LOSA.BL.Entities
         public Position PositionId { get; set; }
         public bool InStaff { get; set; }
         public DateTime HireDate { get; set; }
-        public DateTime DismissalTime { get; set; }
+        public DateTime? DismissalTime { get; set; }
     }
 }

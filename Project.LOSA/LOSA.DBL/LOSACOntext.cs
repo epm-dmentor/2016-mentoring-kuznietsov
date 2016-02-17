@@ -19,6 +19,7 @@ namespace LOSA.DBL
             : base("name=LOSAContext")
         {
         }
+
         public DbSet<FlightObservation> Observations { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<FlightError> Errors { get; set; }

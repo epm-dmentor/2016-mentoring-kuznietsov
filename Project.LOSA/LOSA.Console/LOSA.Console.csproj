@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOSA.BL\LOSA.BL.csproj">
+    <ProjectReference Include="..\LOSA.BL\LOSA.Model.csproj">
       <Project>{29b01739-321d-4adf-bc98-8242b297a121}</Project>
-      <Name>LOSA.BL</Name>
+      <Name>LOSA.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\LOSA.DBL\LOSA.DBL.csproj">
       <Project>{2b222336-11c1-4f82-bbd7-6bcf37671001}</Project>

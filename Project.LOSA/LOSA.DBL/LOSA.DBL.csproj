@@ -72,9 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOSA.BL\LOSA.BL.csproj">
+    <ProjectReference Include="..\LOSA.BL\LOSA.Model.csproj">
       <Project>{29b01739-321d-4adf-bc98-8242b297a121}</Project>
-      <Name>LOSA.BL</Name>
+      <Name>LOSA.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

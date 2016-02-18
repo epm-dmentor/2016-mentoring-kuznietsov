@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.BL", "LOSA.BL\LOSA.BL.csproj", "{29B01739-321D-4ADF-BC98-8242B297A121}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.Model", "LOSA.BL\LOSA.Model.csproj", "{29B01739-321D-4ADF-BC98-8242B297A121}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.DBL", "LOSA.DBL\LOSA.DBL.csproj", "{2B222336-11C1-4F82-BBD7-6BCF37671001}"
 EndProject

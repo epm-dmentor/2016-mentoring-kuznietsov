@@ -7,13 +7,13 @@ namespace LOSA.DBL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class HireDate_to_nullable : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(HireDate_to_nullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602161005028_HireDate_to_nullable"; }
+            get { return "201602250907550_Initial"; }
         }
         
         string IMigrationMetadata.Source

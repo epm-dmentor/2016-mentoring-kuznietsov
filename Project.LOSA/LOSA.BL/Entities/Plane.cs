@@ -1,8 +1,8 @@
-﻿namespace LOSA.BL.Entities
+﻿namespace LOSA.Model.Entities
 {
     public class Plane
     {
-        public int Id { get; set; }
+        public int PlaneId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
     }

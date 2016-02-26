@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LOSA.BL.Entities;
+using LOSA.Model.Entities;
 
-namespace LOSA.BL
+namespace LOSA.Model
 {
     public class FlightObservation
     {
         //Properties
-        public int Id { get; set; }
-        public Flight ObservedFlight { get; set; }
-        public Observer FlightObservingPerson { get; set; }
+        public int FlightObservationId { get; set; }
+        public virtual Flight Flight { get; set; }
+        public virtual Observer FlightObservingPerson { get; set; }
         public CrewMember TakeOffPilot { get; set; }
         public CrewMember LandingPilot { get; set; }
         public bool TakeoffDelay { get; set; }
@@ -24,30 +24,18 @@ namespace LOSA.BL
             get { return FlightErrors.Any(); }
         }
 
-        public List<FlightError> FlightErrors { get; set; }
-        public List<FlightThreat> FlightThreats { get; set; }
+        public virtual List<FlightError> FlightErrors { get; set; }
+        public virtual List<FlightThreat> FlightThreats { get; set; }
         
         //Constructor
         public FlightObservation(Flight observSubj, Observer observPerson)
         {
-            ObservedFlight = observSubj;
+            Flight = observSubj;
             FlightObservingPerson = observPerson;
             FlightErrors = new List<FlightError>();
             FlightThreats = new List<FlightThreat>();
         }
 
         //Methods
-        public void AddError(FlightError typeOfError, FlightErrorOutcome outcome)
-        {
-            var error = new FlightError {ErrorType = typeOfError, ErrorOutcome = outcome, ParentObservation = this};
-            FlightErrors.Add(error);
-        }
-
-
-        public void AddThreat(ThreatType typeOfThreat, bool outcome)
-        {
-            var threat = new FlightThreat {ThreatType = typeOfThreat, ThreatOutcome = outcome, ParentObservation = this};
-            FlightThreats.Add(threat);
-        }
     }
 }

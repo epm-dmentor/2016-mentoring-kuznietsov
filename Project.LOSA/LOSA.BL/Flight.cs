@@ -1,24 +1,31 @@
 ﻿using System;
-using LOSA.BL.Entities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using LOSA.Model.Entities;
 
-namespace LOSA.BL
+namespace LOSA.Model
 {
     public class Flight
     {
+        //To create m2m depandacies between crewmember&flight o2o should be thrown??
+
         //Properties
         public int FlightId { get; set; }
-        public Plane Plane { get; set; }
-        public CrewMember Captain { get; set; }
-        public CrewMember FirstOfficer { get; set; }
-        public Airport Departure { get; set; }
-        public Airport Arriwal { get; set; }
+        public virtual Plane Plane { get; set; }
+        public int PlaneId { get; set; }
+        public virtual Airport Departure { get; set; }
+        public int DepartureAirportId { get; set; }
+        public virtual Airport Arrival { get; set; }
+        public int ArrivalAirportId { get; set; }
         public DateTime? TakeOffTimeStamp { get; set; }
         public DateTime? LandingTimeStamp { get; set; }
         public int? CurrentFlightAttitude { get; set; }
         public FlightStage CurrentFlightStage { get; set; }
+        public virtual ICollection<CrewMember> CrewMembers { get; set; }
 
         //Constructor
-        public Flight() {}
+
 
         //Methods
     }

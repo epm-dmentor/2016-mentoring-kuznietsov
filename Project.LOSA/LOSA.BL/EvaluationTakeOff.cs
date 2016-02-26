@@ -1,11 +1,11 @@
-﻿using LOSA.BL.Enums;
+﻿using LOSA.Model.Enums;
 
-namespace LOSA.BL
+namespace LOSA.Model
 {
     public class EvaluationTakeOff
     {
-        public int Id { get; set; } 
-        public FlightObservation ParentObservation { get; set; }
+        public int Id { get; set; }
+        public int FlightObservationId { get; set; }
         public EvaluationScale MonitorCrosscheck { get; set; }
         public EvaluationScale WorkloadManagement { get; set; }
         public EvaluationScale Vigilance { get; set; }

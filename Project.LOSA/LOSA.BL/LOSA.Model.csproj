@@ -7,8 +7,8 @@
     <ProjectGuid>{29B01739-321D-4ADF-BC98-8242B297A121}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LOSA.BL</RootNamespace>
-    <AssemblyName>LOSA.BL</AssemblyName>
+    <RootNamespace>LOSA.Model</RootNamespace>
+    <AssemblyName>LOSA.Model</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Entities\Airport.cs" />
     <Compile Include="Entities\CrewMember.cs" />
-    <Compile Include="Entities\FlightCrew.cs" />
     <Compile Include="Entities\Position.cs" />
     <Compile Include="Enums\ErrorOutcome.cs" />
     <Compile Include="Enums\EvaluationScale.cs" />

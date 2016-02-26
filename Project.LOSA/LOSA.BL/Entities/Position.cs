@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LOSA.BL.Entities
+﻿namespace LOSA.Model.Entities
 {
     public class Position
     {

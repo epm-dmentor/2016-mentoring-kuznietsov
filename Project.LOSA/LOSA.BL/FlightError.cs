@@ -1,12 +1,12 @@
-﻿using LOSA.BL.Entities;
-using LOSA.BL.Enums;
+﻿using LOSA.Model.Enums;
+using LOSA.Model.Entities;
 
-namespace LOSA.BL
+namespace LOSA.Model
 {
     public class FlightError
     {
         public int Id { get; set; }
-        public FlightObservation ParentObservation { get; set; }   
+        public int FlightObservationId { get; set; }   
         public string ErrorDescription { get; set; }
         public string ErrorConsequencesDetails { get; set; }
         public FlightStage DetectedOnStage { get; set; }

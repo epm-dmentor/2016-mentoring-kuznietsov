@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LOSA.BL\LOSA.BL.csproj">
+      <Project>{0c4ceab0-1362-423e-ae35-be306402c7d2}</Project>
+      <Name>LOSA.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LOSA.BL\LOSA.Model.csproj">
       <Project>{29b01739-321d-4adf-bc98-8242b297a121}</Project>
       <Name>LOSA.Model</Name>

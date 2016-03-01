@@ -52,24 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LOSAContext.cs" />
-    <Compile Include="Migrations\201602151358500_Initial.cs" />
-    <Compile Include="Migrations\201602151358500_Initial.Designer.cs">
-      <DependentUpon>201602151358500_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161005028_HireDate_to_nullable.cs" />
-    <Compile Include="Migrations\201602161005028_HireDate_to_nullable.Designer.cs">
-      <DependentUpon>201602161005028_HireDate_to_nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161017414_Nullable_fields_added.cs" />
-    <Compile Include="Migrations\201602161017414_Nullable_fields_added.Designer.cs">
-      <DependentUpon>201602161017414_Nullable_fields_added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602161021587_Nullable_fields_added_1.cs" />
-    <Compile Include="Migrations\201602161021587_Nullable_fields_added_1.Designer.cs">
-      <DependentUpon>201602161021587_Nullable_fields_added_1.cs</DependentUpon>
+    <Compile Include="Migrations\201602250907550_Initial.cs" />
+    <Compile Include="Migrations\201602250907550_Initial.Designer.cs">
+      <DependentUpon>201602250907550_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LOSA.BL\LOSA.Model.csproj">
@@ -78,21 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602151358500_Initial.resx">
-      <DependentUpon>201602151358500_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161005028_HireDate_to_nullable.resx">
-      <DependentUpon>201602161005028_HireDate_to_nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161017414_Nullable_fields_added.resx">
-      <DependentUpon>201602161017414_Nullable_fields_added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602161021587_Nullable_fields_added_1.resx">
-      <DependentUpon>201602161021587_Nullable_fields_added_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602250907550_Initial.resx">
+      <DependentUpon>201602250907550_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

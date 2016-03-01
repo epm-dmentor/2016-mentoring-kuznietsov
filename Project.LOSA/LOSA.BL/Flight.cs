@@ -8,8 +8,6 @@ namespace LOSA.Model
 {
     public class Flight
     {
-        //To create m2m depandacies between crewmember&flight o2o should be thrown??
-
         //Properties
         public int FlightId { get; set; }
         public virtual Plane Plane { get; set; }

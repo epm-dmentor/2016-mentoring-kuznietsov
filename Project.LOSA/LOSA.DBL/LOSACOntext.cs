@@ -1,5 +1,5 @@
-using LOSA.BL;
-using LOSA.BL.Entities;
+using LOSA.Model;
+using LOSA.Model.Entities;
 
 namespace LOSA.DBL
 {
@@ -34,7 +34,21 @@ namespace LOSA.DBL
         public DbSet<EvaluationTakeOff> TakeOffEvaluations { get; set; }
         public DbSet<CrewMember> CrewMembers { get; set; }
         public DbSet<Position> CrewPositions { get; set; }
-        public DbSet<FlightCrew> FlightCrews { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Flight>().
+                HasMany(c => c.CrewMembers).
+                WithMany(p => p.Flights).
+                Map(
+                    m =>
+                    {
+                        m.MapLeftKey("FlightId");
+                        m.MapRightKey("CrewMemberId");
+                        m.ToTable("FlightCrews");
+                    });
+
+        }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.

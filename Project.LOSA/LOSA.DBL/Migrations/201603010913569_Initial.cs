@@ -45,20 +45,14 @@ namespace LOSA.DBL.Migrations
                         LandingTimeStamp = c.DateTime(),
                         CurrentFlightAttitude = c.Int(),
                         CurrentFlightStage = c.Int(nullable: false),
-                        Captain_CrewMemberId = c.Int(),
-                        FirstOfficer_CrewMemberId = c.Int(),
                     })
                 .PrimaryKey(t => t.FlightId)
                 .ForeignKey("dbo.Airports", t => t.ArrivalAirportId)
-                .ForeignKey("dbo.CrewMembers", t => t.Captain_CrewMemberId)
                 .ForeignKey("dbo.Airports", t => t.DepartureAirportId)
-                .ForeignKey("dbo.CrewMembers", t => t.FirstOfficer_CrewMemberId)
                 .ForeignKey("dbo.Planes", t => t.PlaneId, cascadeDelete: true)
                 .Index(t => t.PlaneId)
                 .Index(t => t.DepartureAirportId)
-                .Index(t => t.ArrivalAirportId)
-                .Index(t => t.Captain_CrewMemberId)
-                .Index(t => t.FirstOfficer_CrewMemberId);
+                .Index(t => t.ArrivalAirportId);
             
             CreateTable(
                 "dbo.Planes",
@@ -259,11 +253,9 @@ namespace LOSA.DBL.Migrations
             DropForeignKey("dbo.FlightErrors", "CommitedBy_CrewMemberId", "dbo.CrewMembers");
             DropForeignKey("dbo.CrewMembers", "PositionId", "dbo.Positions");
             DropForeignKey("dbo.Flights", "PlaneId", "dbo.Planes");
-            DropForeignKey("dbo.Flights", "FirstOfficer_CrewMemberId", "dbo.CrewMembers");
             DropForeignKey("dbo.Flights", "DepartureAirportId", "dbo.Airports");
             DropForeignKey("dbo.FlightCrews", "CrewMemberId", "dbo.CrewMembers");
             DropForeignKey("dbo.FlightCrews", "FlightId", "dbo.Flights");
-            DropForeignKey("dbo.Flights", "Captain_CrewMemberId", "dbo.CrewMembers");
             DropForeignKey("dbo.Flights", "ArrivalAirportId", "dbo.Airports");
             DropIndex("dbo.FlightCrews", new[] { "CrewMemberId" });
             DropIndex("dbo.FlightCrews", new[] { "FlightId" });
@@ -277,8 +269,6 @@ namespace LOSA.DBL.Migrations
             DropIndex("dbo.FlightErrors", new[] { "DetectedBy_CrewMemberId" });
             DropIndex("dbo.FlightErrors", new[] { "CommitedBy_CrewMemberId" });
             DropIndex("dbo.FlightErrors", new[] { "FlightObservationId" });
-            DropIndex("dbo.Flights", new[] { "FirstOfficer_CrewMemberId" });
-            DropIndex("dbo.Flights", new[] { "Captain_CrewMemberId" });
             DropIndex("dbo.Flights", new[] { "ArrivalAirportId" });
             DropIndex("dbo.Flights", new[] { "DepartureAirportId" });
             DropIndex("dbo.Flights", new[] { "PlaneId" });

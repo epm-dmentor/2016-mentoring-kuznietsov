@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
 using LOSA.BL;
-using LOSA.Model;
-using LOSA.DBL;
+using LOSA.Model.Entities;
 
 namespace LOSA.Console
 {
@@ -12,8 +9,7 @@ namespace LOSA.Console
     {
         static void Main(string[] args)
         {
-            GetAllFlights();
-            System.Console.ReadLine();
+            MakeAChoice();
         }
 
         static void GetAllFlights()
@@ -32,23 +28,13 @@ namespace LOSA.Console
             //    PrintCurrentFlights(query);
             //}
 
-            //Get airports
-            using (var context = new LOSAContext())
-            {
-                var query =
-                    from f in context.Flights
-                    join a in context.Airports on
-                        f.ArrivalAirportId equals a.AirportId
-                    join d in context.Airports on
-                        f.DepartureAirportId equals d.AirportId
-                    select new { Arrival = a.Code, Departure = d.Code };
-            }
+            ////Get airports
 
             //Copy flights
             //var unit1 = new UnitOfWork();
             //using (unit1)
             //{
-            //    var query1 = unit1.FlightsRepository.FindBy(null);
+            //    var query1 = unit1.FlightsRepository.Get(null);
             //    foreach (var flight in query1)
             //    {
             //        if (flight.TakeOffTimeStamp != null)
@@ -59,17 +45,60 @@ namespace LOSA.Console
             //    }
             //    unit1.Save();
             //}
-            
-            
+
+
         }
 
-        static void PrintCurrentFlights(IEnumerable<Flight> flights)
+
+        public static IEnumerable<Airport> GetUsedAirports()
         {
-            System.Console.WriteLine("FlightID \tFlightObserver \tDeparture \tArriwal \tPlane");
-            foreach (var flight in flights)
+            var unit = new UnitOfWork();
+            using (unit)
             {
-                System.Console.WriteLine($"{flight.FlightId} \t{flight.Captain.FirstName} {flight.Captain.FirstName} \t{flight.Departure.Code} \t{flight.Arrival.Code} \t{flight.Plane.Code}");
+                var queryA =
+                    from f in unit.FlightsRepository.Get()   //Add empty override
+                    join a in unit.AirportsRepository.Get() on
+                        f.ArrivalAirportId equals a.AirportId
+                    select a;              
+                
+                var queryD = 
+                    from f in unit.FlightsRepository.Get()
+                    join d in unit.AirportsRepository.Get() on
+                        f.DepartureAirportId equals d.AirportId
+                    select d;
+
+                return queryA.Distinct().Union(queryD.Distinct()).ToArray();
             }
+        }
+
+        public static IEnumerable<Airport> GetUnusedAirports()
+        {
+            var used = GetUsedAirports();
+            var unit = new UnitOfWork();
+            using (unit)
+            {
+                return unit.AirportsRepository.Get().ToArray().Except(used); //TO CHECK
+            }
+        }
+
+        public static void PrintOut(IEnumerable<Airport> airports)
+        {
+            foreach (var airport in airports)
+            {
+                System.Console.WriteLine($"{airport.Code} \t {airport.Description}");
+            }
+        }
+
+        public static void MakeAChoice()
+        {
+            System.Console.WriteLine("Print 1 to show all used and unused airports or any other key to exit");
+            var key = System.Console.ReadLine();
+            if (key == null || !key.Equals("1")) return;
+            PrintOut(GetUsedAirports());
+            System.Console.ReadLine();
+            PrintOut(GetUnusedAirports());
+            System.Console.ReadLine();
         }
     }
 }
+

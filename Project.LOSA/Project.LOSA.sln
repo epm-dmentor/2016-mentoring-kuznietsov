@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.Console", "LOSA.Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.BL", "LOSA.BL\LOSA.BL.csproj", "{0C4CEAB0-1362-423E-AE35-BE306402C7D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOSA.API", "LOSA.API\LOSA.API.csproj", "{73771F82-763D-446C-B22B-1E6CCEECAE47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0C4CEAB0-1362-423E-AE35-BE306402C7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4CEAB0-1362-423E-AE35-BE306402C7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4CEAB0-1362-423E-AE35-BE306402C7D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73771F82-763D-446C-B22B-1E6CCEECAE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73771F82-763D-446C-B22B-1E6CCEECAE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73771F82-763D-446C-B22B-1E6CCEECAE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73771F82-763D-446C-B22B-1E6CCEECAE47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

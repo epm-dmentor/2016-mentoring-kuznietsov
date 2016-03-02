@@ -23,7 +23,7 @@ namespace LOSA.BL
             Context = context;
         }
 
-        public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate = null)
+        public virtual IQueryable<T> Get(Expression<Func<T, bool>> predicate = null)
         {
             if (predicate != null)
             {
@@ -44,6 +44,8 @@ namespace LOSA.BL
 
         public virtual void Delete(T entity)
         {
+            if (entity == null) throw new ArgumentNullException(nameof(entity));
+
             _entities.Set<T>().Remove(entity);
         }
 

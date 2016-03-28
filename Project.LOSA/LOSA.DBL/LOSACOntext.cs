@@ -18,6 +18,7 @@ namespace LOSA.DBL
         public LOSAContext()
             : base("name=LOSAContext")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<FlightObservation> Observations { get; set; }

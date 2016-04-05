@@ -15,7 +15,7 @@ namespace LOSA.API.Controllers
     {
         // GET api/values
         //Is this the proper way to return result with IhhtpActionResult?
-        public IEnumerable<IHttpActionResult> Get()
+        public IHttpActionResult Get()
         {
             var unit = new UnitOfWork();
             using (unit)
@@ -24,12 +24,9 @@ namespace LOSA.API.Controllers
                     unit.FlightsRepository.Get()
                         .Include(f => f.Arrival)
                         .Include(f => f.Plane)
-                        .Include(f => f.Departure);
-                        //(f => f.CrewMembers.Where(c => c.Flights.Contains(f)));
-                foreach (var flight in result)
-                {
-                    yield return Ok(flight);
-                }
+                        .Include(f => f.Departure)
+                        .Include(f => f.CrewMembers);
+                    return Ok(result.ToArray());
             }
         }
 
@@ -41,19 +38,11 @@ namespace LOSA.API.Controllers
             var unit = new UnitOfWork();
             using (unit)
             {
-                var flight = unit.FlightsRepository.Get().FirstOrDefault(f => f.FlightId == id);
+                var flight = unit.FlightsRepository.Get(f => f.FlightId == id).FirstOrDefault();
                 if (flight == null)
-                {
                     return NotFound();
-                }
                 return
                     Ok(flight);
-
-                //if (unit.FlightsRepository.Get(f => f.FlightId == id) != null)
-                //{
-                //    return Ok(unit.FlightsRepository.Get(f => f.FlightId == id));
-                //}
-                //return NotFound();
             }
         }
 

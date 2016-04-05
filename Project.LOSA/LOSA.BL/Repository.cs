@@ -30,11 +30,7 @@ namespace LOSA.BL
                 IQueryable<T> query = _entities.Set<T>().Where(predicate);
                 return query;
             }
-            else
-            {
-                IQueryable<T> query = _entities.Set<T>();
-                return query;
-            }
+                return _entities.Set<T>();
         }
 
         public virtual void Add(T entity)

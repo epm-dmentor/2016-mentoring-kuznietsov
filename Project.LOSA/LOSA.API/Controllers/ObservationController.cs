@@ -37,9 +37,7 @@ namespace LOSA.API.Controllers
             var unit = new UnitOfWork();
             var result = unit.ObservationsRepository.Get().FirstOrDefault(o => o.FlightObservationId == id);
             if (result == null)
-            {
                 return NotFound();
-            }
             return Ok(result);
         }
 

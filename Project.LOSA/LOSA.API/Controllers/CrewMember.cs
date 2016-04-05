@@ -4,22 +4,33 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LOSA.BL;
 using LOSA.Model.Entities;
 
 namespace LOSA.API.Controllers
 {
-    public class FlightCrewController : ApiController
+    public class CrewMemberController : ApiController
     {
         // GET: api/FlightCrew
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var unit = new UnitOfWork())
+            {
+                var result = unit.CrewMembersRepository.Get();
+                return Ok(result.ToArray());
+            }
         }
 
         // GET: api/FlightCrew/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            using (var unit = new UnitOfWork())
+            {
+                var result = unit.CrewMembersRepository.Get(c => c.CrewMemberId == id);
+                if (result != null)
+                    return Ok(result);
+                return NotFound();
+            }
         }
 
         // POST: api/FlightCrew
